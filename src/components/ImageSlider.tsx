@@ -62,15 +62,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   }, []);
 
   if (!enableSlider) {
-    return (
-      <div className={cn("relative w-full max-w-3xl select-none", className)}>
-        <img 
-          src={leftImage} 
-          alt={leftAlt}
-          className="w-full object-contain" 
-        />
-      </div>
-    );
+    return null;
   }
 
   return (
