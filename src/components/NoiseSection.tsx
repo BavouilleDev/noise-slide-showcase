@@ -5,12 +5,13 @@ import { cn } from "@/lib/utils";
 
 interface NoiseSectionProps {
   title: string;
-  description: string;
+  description?: string;
   leftImage: string;
   rightImage: string;
   leftAlt: string;
   rightAlt: string;
   className?: string;
+  enableSlider?: boolean;
 }
 
 const NoiseSection: React.FC<NoiseSectionProps> = ({
@@ -20,15 +21,13 @@ const NoiseSection: React.FC<NoiseSectionProps> = ({
   rightImage,
   leftAlt,
   rightAlt,
-  className
+  className,
+  enableSlider = false
 }) => {
   return (
     <section className={cn("py-16 px-4", className)}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4 text-center">{title}</h2>
-        <p className="text-gray-700 mb-8 text-center max-w-2xl mx-auto">
-          {description}
-        </p>
+        <h2 className="text-3xl font-bold mb-8 text-center">{title}</h2>
         
         <div className="flex justify-center">
           <ImageSlider
@@ -36,6 +35,7 @@ const NoiseSection: React.FC<NoiseSectionProps> = ({
             rightImage={rightImage}
             leftAlt={leftAlt}
             rightAlt={rightAlt}
+            enableSlider={enableSlider}
           />
         </div>
       </div>

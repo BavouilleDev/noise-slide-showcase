@@ -8,6 +8,7 @@ interface ImageSliderProps {
   leftAlt: string;
   rightAlt: string;
   className?: string;
+  enableSlider?: boolean;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
@@ -15,12 +16,14 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   rightImage,
   leftAlt,
   rightAlt,
-  className
+  className,
+  enableSlider = false
 }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (!enableSlider) return;
     setIsDragging(true);
   };
 
@@ -29,7 +32,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+    if (!isDragging || !enableSlider) return;
     
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -39,6 +42,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    if (!enableSlider) return;
+    
     const touch = e.touches[0];
     const rect = e.currentTarget.getBoundingClientRect();
     const x = touch.clientX - rect.left;
@@ -55,6 +60,18 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       document.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
+
+  if (!enableSlider) {
+    return (
+      <div className={cn("relative w-full max-w-3xl select-none", className)}>
+        <img 
+          src={leftImage} 
+          alt={leftAlt}
+          className="w-full object-contain" 
+        />
+      </div>
+    );
+  }
 
   return (
     <div 
