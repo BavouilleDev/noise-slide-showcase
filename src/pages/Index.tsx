@@ -17,7 +17,7 @@ const Index: React.FC = () => {
         {/* Perlin Noise Section */}
         <NoiseSection
           title="Perlin Noise"
-          leftImage="/lovable-uploads/09f9523c-7eaa-4c30-aaa9-1dd7e209596f.png"
+          leftImage="/lovable-uploads/f17e6fb3-6401-4879-a1e3-14fc7e852009.png"
           rightImage="/lovable-uploads/c8f96ee9-c021-4fe7-94c1-0d3e8a460de5.png"
           leftAlt="Perlin Noise Texture"
           rightAlt="Perlin Noise Graph"
@@ -28,7 +28,7 @@ const Index: React.FC = () => {
         {/* Simplex Noise Section */}
         <NoiseSection
           title="Simplex Noise"
-          leftImage="/lovable-uploads/f17e6fb3-6401-4879-a1e3-14fc7e852009.png"
+          leftImage="/lovable-uploads/09f9523c-7eaa-4c30-aaa9-1dd7e209596f.png"
           rightImage="/lovable-uploads/04069a59-98f9-4726-9ec6-1705dc5a548c.png"
           leftAlt="Simplex Noise 3D Mesh"
           rightAlt="Simplex Noise Wireframe"
