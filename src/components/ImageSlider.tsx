@@ -74,6 +74,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleMouseUp}
     >
+      {/* Right image (background) */}
       <div className="absolute inset-0 overflow-hidden">
         <img 
           src={rightImage} 
@@ -81,9 +82,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           className="absolute inset-0 w-full h-full object-cover" 
         />
       </div>
+      
+      {/* Left image (revealed by slider) with clip-path */}
       <div 
         className="absolute inset-0 overflow-hidden" 
-        style={{ width: `${sliderPosition}%` }}
+        style={{ 
+          clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` 
+        }}
       >
         <img 
           src={leftImage} 
@@ -92,14 +97,16 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         />
       </div>
       
+      {/* Slider line */}
       <div 
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-        style={{ left: `calc(${sliderPosition}% - 2px)` }}
+        style={{ left: `${sliderPosition}%` }}
       />
       
+      {/* Slider handle */}
       <div 
         className="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full shadow-md cursor-ew-resize flex items-center justify-center"
-        style={{ left: `calc(${sliderPosition}% - 12px)` }}
+        style={{ left: `${sliderPosition}%`, transform: `translateX(-50%) translateY(-50%)` }}
       >
         <div className="w-1 h-4 bg-gray-400 rounded-full"></div>
       </div>
